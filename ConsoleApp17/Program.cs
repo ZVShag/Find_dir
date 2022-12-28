@@ -67,8 +67,9 @@ namespace ConsoleApp16
                     break;
                 }
             }
-            foreach(string dirNm in flBase)
-                Console.WriteLine(dirNm);
+            
+            foreach(string flNm in flBase)
+                Console.WriteLine(flNm);
            
 
 
