@@ -41,7 +41,6 @@ namespace ConsoleApp16
                 dir1 = Directory.EnumerateDirectories(List_dir4[z]);
                 z++;
             }
-            Console.WriteLine(dir0.Count);
             bool t = false;
             foreach (string dirNm in dir0)
             {
@@ -55,7 +54,7 @@ namespace ConsoleApp16
                 if (t == true)
                 {
                     //Если папка имя которой ввел пользователь существует, вывести полный путь
-                    Console.WriteLine("YES");
+                    Console.WriteLine(dirNm);
                     break;
                 }
             }
