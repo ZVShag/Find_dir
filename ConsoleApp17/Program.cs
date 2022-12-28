@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Xml.Schema;
 
 namespace ConsoleApp16
 {
@@ -13,7 +14,7 @@ namespace ConsoleApp16
             List<string> List_dir3 = new List<string>();
             List<string> List_dir4 = new List<string>();
             string path_name = Console.ReadLine();
-
+            List<string> flBase = new List<string>();
             IEnumerable<string> dir1 = Directory.EnumerateDirectories("C:\\Users\\Studen 2\\source\\repos");
             IEnumerable<string> dir2;
             int z = 0;
@@ -31,7 +32,7 @@ namespace ConsoleApp16
                             List_dir3.Add(dirName2);
                         }
                     foreach (string dirName3 in List_dir3)
-                        dir0.Add($"\t\t{dirName3}");
+                        dir0.Add(dirName3);
                     foreach (string dirName4 in List_dir3)
                         List_dir4.Add(dirName4);
 
@@ -42,8 +43,16 @@ namespace ConsoleApp16
                 z++;
             }
             bool t = false;
-            foreach (string dirNm in dir0)
+            int k = 0;
+            foreach (string dirNm in dir0)//------------>Зачем нужен dir0
             {
+                IEnumerable<string> fl = Directory.GetFiles(dirNm);
+                k = k + fl.Count();
+                foreach (string f in fl)
+                {
+                    string[] name_file = f.Split('\\');
+                    flBase.Add(name_file[name_file.Length-1]);
+                }
                 string[] name_dir= dirNm.Split('\\');
                 
                 foreach (string name in name_dir)
@@ -53,11 +62,15 @@ namespace ConsoleApp16
                 }
                 if (t == true)
                 {
-                    //Если папка имя которой ввел пользователь существует, вывести полный путь
+                    
                     Console.WriteLine(dirNm);
                     break;
                 }
             }
+            foreach(string dirNm in flBase)
+                Console.WriteLine(dirNm);
+           
+
 
         }
     }
